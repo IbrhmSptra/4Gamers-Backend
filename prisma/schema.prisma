@@ -32,6 +32,7 @@ model Tags{
 model Post {
   id Int @id @default(autoincrement())
   title String
+  image String? @db.Text
   content String @db.Text
   created_at DateTime @default(now())
   authorId String
