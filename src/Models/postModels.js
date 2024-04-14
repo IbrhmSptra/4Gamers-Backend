@@ -10,7 +10,34 @@ const getUserPostById = async (id, uuid) => {
   return data;
 };
 
-const createPost = async (data) => {
+const getUserPost = async (uuid, page) => {
+  const showsData = 10;
+  const skip = (page - 1) * showsData;
+  const totalResult = await prisma.post.count({ where: { authorId: uuid } });
+  const data = await prisma.post.findMany({
+    skip,
+    take: showsData,
+    where: { authorId: uuid },
+    include: {
+      tags: true,
+    },
+  });
+  return { data, totalResult };
+};
+
+const getAllPost = async (page) => {
+  const showsData = 10;
+  const skip = (page - 1) * showsData;
+  const totalResult = await prisma.post.count();
+  const data = await prisma.post.findMany({
+    skip,
+    take: showsData,
+    include: { tags: true },
+  });
+  return { data, totalResult };
+};
+
+const createPost = async (data, uuid) => {
   const tags = data.tags.map((i) => {
     return { name: i };
   });
@@ -19,19 +46,19 @@ const createPost = async (data) => {
       title: data.title,
       image: data.image,
       content: data.content,
-      authorId: data.uuid,
+      authorId: uuid,
       tags: { create: tags },
     },
   });
   return createdData;
 };
 
-const updateUserPost = async (data, id) => {
+const updateUserPost = async (data, id, uuid) => {
   const tags = data.tags?.map((i) => {
     return { name: i };
   });
   const updated = await prisma.post.update({
-    where: { id: id, authorId: data.uuid },
+    where: { id: id, authorId: uuid },
     data: {
       title: data.title,
       image: data.image,
@@ -54,4 +81,6 @@ module.exports = {
   updateUserPost,
   getUserPostById,
   deleteUserPost,
+  getUserPost,
+  getAllPost,
 };

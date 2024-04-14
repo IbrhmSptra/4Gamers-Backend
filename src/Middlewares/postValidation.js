@@ -6,15 +6,15 @@ const isSpaceOnly = (string) => {
 };
 
 const postValidator = (req, res, next) => {
-  const { title, content, uuid } = req.body;
+  const { title, content } = req.body;
   //if user not input anything on field
-  if (title == "" || content == "" || uuid == "") {
+  if (title == "" || content == "") {
     return res.status(400).send({
       message: "Field should not empty",
     });
   }
   //if user input only space
-  if (isSpaceOnly(title) || isSpaceOnly(content) || isSpaceOnly(uuid)) {
+  if (isSpaceOnly(title) || isSpaceOnly(content)) {
     return res.status(400).send({
       message: "Field should not empty",
     });
