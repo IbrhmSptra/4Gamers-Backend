@@ -1,27 +1,29 @@
-﻿# 4Gamers Backend Apps
+﻿# 4Gamers Backend
 
 4Gamers is a platform designed for gamers to share their gaming news, reviews, experiences, tips, and tricks with fellow gamers. This repository currently focuses on backend development, with plans for frontend development in the future.
 ![thumbnail](https://i.postimg.cc/hvBp06q7/file-cover-1.png)
 
 **Tech Stack :**
+
 - NodeJS
 - Express
 - Prisma
 - Mysql
 - JsonWebToken
 
-
 # Database
+
 ![Database Design](https://i.postimg.cc/Nf3gD0r9/Screenshot-2024-04-16-105455.png)
 
-
 # API
+
 All endpoint documentation with request spec and response for 4Gamers API also documentation for authentication
 
 ## Authentication
 
 Endpoint : **POST /auth/register**
 Request Body :
+
 ```JSON
 {
 	"email"  :  "ibrhmsptra@gmail.com",
@@ -29,7 +31,9 @@ Request Body :
 	"password"  :  "Baim!123"
 }
 ```
+
 Response Success :
+
 ```JSON
 {
 
@@ -44,13 +48,16 @@ Response Success :
 
 Endpoint : **POST /auth/login**
 Request Body :
+
 ```JSON
 {
 	"email"  :  "ibrhmsptra@gmail.com",
 	"password"  :  "Baim!123"
 }
 ```
+
 Response Success :
+
 ```JSON
 {
 	"data":  {
@@ -67,12 +74,15 @@ Response Success :
 
 Endpoint : **GET /tags**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	{
@@ -104,18 +114,23 @@ Response Success :
 
 Endpoint : **POST /insert**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Request Body :
+
 ```JSON
 {
 	"name"  :  "Open World"
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Tag successfully added",
@@ -125,20 +140,26 @@ Response Success :
 	}
 ]
 ```
+
 Endpoint : **PATCH /tags/edit/:id**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Request Body :
+
 ```JSON
 {
 	"name"  :  "Open World"
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Tag successfully updated",
@@ -148,14 +169,18 @@ Response Success :
 	}
 ]
 ```
+
 Endpoint : **DELETE /tags/delete/:id**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Tag successfully deleted",
@@ -170,12 +195,15 @@ Response Success :
 
 Endpoint : **POST /post/create**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Request Body :
+
 ```JSON
 {
 	"title"  :  "Susahnya capai radiant di valorant",
@@ -184,7 +212,9 @@ Request Body :
 	"tags"  :  [2,  5]
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Post successfully created",
@@ -211,12 +241,15 @@ Response Success :
 
 Endpoint : **PATCH /post/edit/:id**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Request Body :
+
 ```javascript
 {
 	"title"  :  "title telah di edit", //optional
@@ -225,7 +258,9 @@ Request Body :
 	"tags"  :  [1,5] //optional
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Post successfully updated",
@@ -252,12 +287,15 @@ Response Success :
 
 Endpoint : **DELETE /post/delete/:id**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"message":  "Post successfully deleted",
@@ -271,14 +309,18 @@ Response Success :
 	}
 ]
 ```
+
 Endpoint : **GET /post/user/:page**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"page":  "1",
@@ -326,12 +368,15 @@ Response Success :
 
 Endpoint : **GET /post/:page**
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response Success :
+
 ```JSON
 [
 	"page":  "1",
@@ -380,28 +425,31 @@ Response Success :
 ## Authorization
 
 Request Headers :
+
 ```JSON
 {
 	"Authorization"  :  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiYjVhZjg1YjYtZmE1OS00ZmZkLThhNDctZTRiN2U5ZDFiZTEzIiwiZW1haWwiOiJpYnJobXNwdHJhQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoiaWJyaG1zcHRyYSIsImlhdCI6MTcxMzI0MDc5MiwiZXhwIjoxNzEzMjQ0MzkyfQ.BILYGxWoKKHS1Y1MIqIRa9Vp2jsLCLmDvOAHaKj52J8",
 }
 ```
+
 Response without JWT :
+
 ```JSON
 {
 	"message":  "No JWT token provided"
 }
 ```
+
 Response with invalid JWT :
+
 ```JSON
 {
 	"message":  "Token not valid"
 }
 ```
 
-
 # Author
 
 github : [IbrhmSptra](https://www.github.com/IbrhmSptra)
 Linkedin : [Ibrahim Saputra](https://www.linkedin.com/in/ibrahim-saputra/)
 Web : [IbrhmSptra](https://ibrhmsptra.vercel.app/)
-
