@@ -39,7 +39,7 @@ const getAllPost = async (page) => {
 
 const createPost = async (data, uuid) => {
   const tags = data.tags.map((i) => {
-    return { name: i };
+    return { id: i };
   });
   const createdData = await prisma.post.create({
     data: {
@@ -47,7 +47,10 @@ const createPost = async (data, uuid) => {
       image: data.image,
       content: data.content,
       authorId: uuid,
-      tags: { create: tags },
+      tags: { connect: tags },
+    },
+    include: {
+      tags: true,
     },
   });
   return createdData;
@@ -55,7 +58,7 @@ const createPost = async (data, uuid) => {
 
 const updateUserPost = async (data, id, uuid) => {
   const tags = data.tags?.map((i) => {
-    return { name: i };
+    return { id: i };
   });
   const updated = await prisma.post.update({
     where: { id: id, authorId: uuid },
@@ -63,7 +66,13 @@ const updateUserPost = async (data, id, uuid) => {
       title: data.title,
       image: data.image,
       content: data.content,
-      tags: { create: tags },
+      tags: {
+        set: [],
+        connect: tags,
+      },
+    },
+    include: {
+      tags: true,
     },
   });
   return updated;
